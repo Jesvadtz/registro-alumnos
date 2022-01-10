@@ -43,7 +43,6 @@ function capturAlumno() {
 }
 
 // Se crea un array vacío para almacenar los objetos de los alumnos registrados
-
 let alumnos = [];
 
 // Se ejecuta un ciclo para preguntar si se desea registrar un nuevo alumno
@@ -62,27 +61,35 @@ do {
   }
 } while (continuar);
 
-// Se ejecuta un ciclo para imprimir los datos de cada alumno
+// Se ejecuta un ciclo para mostrar los datos del alumno en el navegador utilizando las funciones del DOM
+
+const tabla = document.getElementById("tabla");
 
 for (let i = 0; i < alumnos.length; i++) {
-  let nombreAlum = alumnos[i].nombre;
-  let apellidoAlum = alumnos[i].apellido;
-  let edadAlum = alumnos[i].edad;
-  let direccAlum = alumnos[i].direccion;
-  let grupoAlum = alumnos[i].grupo;
-  let matriculAlum = alumnos[i].matricula;
-  let promedio = alumnos[i].promedioGeneral;
-  let calEsp = alumnos[i].materias.espanol;
-  let calMat = alumnos[i].materias.matematicas;
-  let calArtes = alumnos[i].materias.artes;
-  let calCiencias = alumnos[i].materias.ciencias;
-  let calDeportes = alumnos[i].materias.deportes;
-  let calIngles = alumnos[i].materias.ingles;
+  let nuevoAlum = document.createElement("tr");
+  let nombreAlum = document.createElement("td");
+  let apellidoAlum = document.createElement("td");
+  let edadAlum = document.createElement("td");
+  let grupoAlum = document.createElement("td");
+  let matriculAlum = document.createElement("td");
+  let direccAlum = document.createElement("td");
+  let promedio = document.createElement("td");
 
-  console.log(
-    `El alumnno ${nombreAlum} ${apellidoAlum} tiene ${edadAlum} años. Reside en ${direccAlum}, pertenece al grupo ${grupoAlum}, su matrícula es: ${matriculAlum} y tiene un promedio general de: ${promedio}`
-  );
-  console.log(
-    `Sus calificaciones fueron las siguientes. Español: ${calEsp} | Matemáticas: ${calMat} | Artes Visuales: ${calArtes} | Ciencias Naturales: ${calCiencias} | Deportes: ${calDeportes} | Inglés: ${calIngles}`
-  );
+  nombreAlum.innerText = alumnos[i].nombre;
+  apellidoAlum.innerText = alumnos[i].apellido;
+  edadAlum.innerText = alumnos[i].edad;
+  grupoAlum.innerText = alumnos[i].grupo;
+  matriculAlum.innerText = alumnos[i].matricula;
+  direccAlum.innerText = alumnos[i].direccion;
+  promedio.innerText = alumnos[i].promedioGeneral;
+
+  nuevoAlum.appendChild(nombreAlum);
+  nuevoAlum.appendChild(apellidoAlum);
+  nuevoAlum.appendChild(edadAlum);
+  nuevoAlum.appendChild(grupoAlum);
+  nuevoAlum.appendChild(matriculAlum);
+  nuevoAlum.appendChild(direccAlum);
+  nuevoAlum.appendChild(promedio);
+
+  tabla.appendChild(nuevoAlum);
 }
